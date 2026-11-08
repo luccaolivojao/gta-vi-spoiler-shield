@@ -41,6 +41,9 @@ fun SettingsScreen(vm: ShieldViewModel) {
 
     Column(Modifier.verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
 
+        val version = remember { runCatching { ctx.packageManager.getPackageInfo(ctx.packageName, 0).versionName }.getOrNull() ?: "?" }
+        Muted("Versão $version")
+
         NeonCard(Modifier.fillMaxWidth(), glow = Neon.Cyan) {
             SectionTitle("TESTES")
             Muted("Antes do dia 18, confirme que tudo funciona sem esperar.")

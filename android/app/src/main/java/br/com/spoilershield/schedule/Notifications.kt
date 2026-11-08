@@ -24,7 +24,7 @@ object Notifications {
         NotificationCompat.Builder(ctx, CH_SHIELD)
             .setSmallIcon(R.drawable.ic_stat_shield)
             .setContentTitle("🛡️ Modo anti-spoiler ativado")
-            .setContentText("Redes bloqueadas. Publique pelo Estúdio Seguro.")
+            .setContentText("Redes sociais bloqueadas.")
             .setOngoing(true)
             .setOnlyAlertOnce(true)
             .build()
