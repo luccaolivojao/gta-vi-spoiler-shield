@@ -79,31 +79,11 @@ enum class SocialApp(
     }
 }
 
-/**
- * Hosts de API OFICIAIS usados pelo Estúdio Seguro. Eles ficam fora do filtro DNS para
- * que a publicação continue funcionando durante o bloqueio. São endpoints de API (JSON/upload),
- * não páginas de feed.
- */
-object StudioAllowlist {
-    private val exact = setOf(
-        "api.instagram.com",
-        "graph.instagram.com",
-        "graph.facebook.com",
-        "rupload.facebook.com",
-        "open.tiktokapis.com",
-    )
-    private val suffixes = listOf("tiktokapis.com")
-
-    fun allows(host: String): Boolean =
-        host in exact || suffixes.any { host == it || host.endsWith(".$it") }
-}
-
 object DomainMatcher {
-    /** Verdadeiro se [host] pertence a um domínio bloqueado e não está na lista de APIs liberadas. */
+    /** Verdadeiro se [host] pertence a um domínio bloqueado. */
     fun isBlocked(host: String, blockedDomains: Collection<String>): Boolean {
         val h = host.trim().trimEnd('.').lowercase()
         if (h.isEmpty()) return false
-        if (StudioAllowlist.allows(h)) return false
         return blockedDomains.any { h == it || h.endsWith(".$it") }
     }
 }

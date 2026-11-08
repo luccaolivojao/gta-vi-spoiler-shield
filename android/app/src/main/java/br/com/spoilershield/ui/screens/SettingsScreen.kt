@@ -71,8 +71,8 @@ fun SettingsScreen(vm: ShieldViewModel) {
                 "• Não lê mensagens privadas nem o conteúdo das telas.\n" +
                     "• Não acessa vídeos, feeds, comentários ou tendências de terceiros.\n" +
                     "• Não busca notícias sobre GTA VI nem usa trailers/imagens do jogo.\n" +
-                    "• Não pede nem guarda senhas das redes (login por OAuth no site oficial).\n" +
-                    "• Tokens ficam cifrados no Android Keystore; configurações ficam só neste aparelho.\n" +
+                    "• Não pede nem guarda senhas das redes.\n" +
+                    "• Não faz login em nenhuma rede; as configurações ficam só neste aparelho.\n" +
                     "• Mensagens de erro são neutras e não exibem conteúdo externo.",
             )
         }

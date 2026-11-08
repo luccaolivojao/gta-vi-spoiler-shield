@@ -42,5 +42,4 @@ class ShieldViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun setWebFilter(on: Boolean) = mutate { it.copy(webFilter = on) }
-    fun setTikTokAudited(on: Boolean) = mutate { it.copy(tiktokAudited = on) }
 }

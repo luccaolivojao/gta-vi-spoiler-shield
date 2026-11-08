@@ -22,9 +22,7 @@
 - Filtro web: DNS-sobre-HTTPS no navegador e "DNS privado" estrito o contornam; a lista de domínios é melhor esforço; apps com cache/IP direto podem escapar (o bloqueio de app cobre isso).
 - **Notificações das redes**: o app não lê notificações (privacidade). Notificações de TikTok/Instagram etc. com spoilers só somem se você as silenciar/bloquear no sistema; o Spoiler Shield nunca exibe notificações externas.
 - Spoilers vindos de WhatsApp, e-mail, sites fora da lista, outras pessoas e outros aparelhos **não** são cobertos.
-- Conectar contas (OAuth) abre a página de login da rede no navegador; durante o bloqueio ela pode ser barrada pelo filtro web. Conecte antes do dia 18.
-- Segredos do app de desenvolvedor ficam no Keystore do aparelho; não distribua o APK.
-- iOS: seletor de apps é manual; teste de 5 min depende do app aberto; Estúdio pendente.
+- iOS: seletor de apps é manual; teste de 5 min depende do app aberto.
 
 ## Pendências sugeridas
-Portar o Estúdio para Swift; tela de "pausar filtro web para conectar conta"; verificação real do upload resumível do Instagram; auditoria TikTok.
+Verificar em aparelhos reais (Samsung/One UI, Android 16+) e compilar o iOS num Mac.

@@ -31,7 +31,6 @@ struct RootView: View {
         TabView {
             HomeView().tabItem { Label("INÍCIO", systemImage: "house.fill") }
             BlockView().tabItem { Label("BLOQUEIO", systemImage: "lock.fill") }
-            StudioView().tabItem { Label("ESTÚDIO", systemImage: "paperplane.fill") }
             SettingsView().tabItem { Label("CONFIG.", systemImage: "gearshape.fill") }
         }
         .tint(Neon.red)

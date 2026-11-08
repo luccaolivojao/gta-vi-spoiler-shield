@@ -27,8 +27,6 @@ data class ShieldState(
     val endedAtMs: Long? = null,
     val enabledApps: Set<String> = SocialApp.defaultIds,
     val webFilter: Boolean = true,
-    /** O usuário declara que o app TikTok dele já passou na auditoria da Content Posting API. */
-    val tiktokAudited: Boolean = false,
 )
 
 object ProtectionLogic {

@@ -83,19 +83,4 @@ class DnsPacketTest {
         assertFalse(DomainMatcher.isBlocked("example.org", d))
         assertFalse(DomainMatcher.isBlocked("", d))
     }
-
-    @Test
-    fun studioApiHostsAreNeverBlocked() {
-        val d = SocialApp.domainsFor(SocialApp.defaultIds)
-        assertFalse(DomainMatcher.isBlocked("graph.instagram.com", d))
-        assertFalse(DomainMatcher.isBlocked("api.instagram.com", d))
-        assertFalse(DomainMatcher.isBlocked("graph.facebook.com", d))
-        assertFalse(DomainMatcher.isBlocked("rupload.facebook.com", d))
-        assertFalse(DomainMatcher.isBlocked("open.tiktokapis.com", d))
-        assertFalse(DomainMatcher.isBlocked("open-upload.tiktokapis.com", d))
-        // mas o site normal continua bloqueado
-        assertTrue(DomainMatcher.isBlocked("www.instagram.com", d))
-        assertTrue(DomainMatcher.isBlocked("www.facebook.com", d))
-        assertTrue(DomainMatcher.isBlocked("www.tiktok.com", d))
-    }
 }

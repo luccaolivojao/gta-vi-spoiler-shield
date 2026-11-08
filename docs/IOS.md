@@ -25,4 +25,3 @@
 | Teste de 5 min | Exato | Janela mínima do sistema = 15 min; o app remove em 5 min com ele aberto, senão a extensão em ~16 min |
 | Navegador | Filtro DNS local (VPN) | `webContent.blockedByFilter` (Safari/WebKit) |
 | Revogar | Desligar permissões | Ajustes → Tempo de Uso (modo Individual permite revogar) |
-| Estúdio Seguro | Implementado | **Pendente** (aba mostra aviso honesto; nada finge publicar) |

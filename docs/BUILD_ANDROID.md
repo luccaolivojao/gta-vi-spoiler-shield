@@ -23,7 +23,6 @@
 2. Autorize **Alarmes exatos**, **Notificações** e **Sem restrição de bateria**.
 3. (Opcional) **Filtro web** → aceite o diálogo de VPN do Android.
 4. Aba **CONFIG.** → *Testar bloqueio por 5 minutos* → abra o Instagram/TikTok e confirme que a tela vermelha aparece.
-5. Aba **ESTÚDIO** → configure credenciais e conecte as contas (veja `CONFIGURAR_APIS.md`). **Faça isso antes do dia 18.**
 
 ## Por que não Play Store
 O serviço de Acessibilidade usado para detectar apps não é uma "ferramenta de acessibilidade"; a política do Google Play não permite esse uso. Distribua só como APK próprio.

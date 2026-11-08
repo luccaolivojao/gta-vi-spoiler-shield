@@ -147,25 +147,6 @@ struct BlockView: View {
     }
 }
 
-// MARK: ESTÚDIO
-struct StudioView: View {
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                NeonCard(glow: Neon.amber) {
-                    SectionTitle("📤 ESTÚDIO SEGURO — PENDENTE NO iOS")
-                    Text("A publicação sem abrir as redes ainda NÃO foi implementada na versão iOS desta entrega. Nada aqui finge publicar.")
-                        .font(.subheadline)
-                    Text("O que é possível no iPhone (mesmas APIs oficiais do Android): TikTok Content Posting API (vídeo, direct post, exige auditoria para ser público) e Instagram API with Instagram Login (Reels e Stories em vídeo, conta Profissional). O código Android em android/…/studio/ descreve cada chamada e pode ser portado para Swift (URLSession + ASWebAuthenticationSession).")
-                        .font(.footnote).foregroundColor(.gray)
-                    Text("Enquanto isso, use o Estúdio Seguro no Android, ou publique pelo app oficial com o bloqueio temporariamente pausado.")
-                        .font(.footnote).foregroundColor(.gray)
-                }
-            }.padding()
-        }.background(Neon.black.ignoresSafeArea())
-    }
-}
-
 // MARK: CONFIGURAÇÕES
 struct SettingsView: View {
     @EnvironmentObject var m: BlockingManager

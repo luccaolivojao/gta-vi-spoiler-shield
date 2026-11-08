@@ -1,11 +1,11 @@
 # 🛡️ GTA VI Spoiler Shield
 
-Bloqueia redes sociais a partir de **18/11/2026 às 06h30 (America/Sao_Paulo)** até você encerrar, e deixa você **publicar** (TikTok/Instagram) sem abrir os apps nem ver feed.
+Bloqueia redes sociais a partir de **18/11/2026 às 06h30 (America/Sao_Paulo)** até você encerrar,.
 
 ```
 android/   App Android (Kotlin + Jetpack Compose) – prioridade, projeto completo
-ios/       App iPhone (SwiftUI + Screen Time APIs) – bloqueio; Estúdio pendente
-docs/      Build, APIs, iOS, LIMITAÇÕES, página de redirect OAuth
+ios/       App iPhone (SwiftUI + Screen Time APIs) – bloqueio
+docs/      Build, iOS, LIMITAÇÕES
 ```
 
 ## Leia primeiro
@@ -22,8 +22,6 @@ docs/      Build, APIs, iOS, LIMITAÇÕES, página de redirect OAuth
 | Tela de bloqueio | `block/BlockActivity.kt`, `ui/screens/BlockOverlayScreen.kt` |
 | Filtro web (VPN local de DNS) | `block/DnsShieldVpnService.kt`, `core/DnsPacket.kt` |
 | Agenda | `schedule/ShieldController.kt` (AlarmManager + WorkManager + boot/fuso/relógio) |
-| Estúdio Seguro | `studio/*`, `ui/screens/StudioScreen.kt` |
-| Segredos | `data/SecureStore.kt` (Keystore AES-GCM) |
 
 O início às 06h30 é um instante absoluto; o bloqueio consulta o relógio real a cada evento, então atraso de alarme não abre brecha.
 

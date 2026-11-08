@@ -30,7 +30,6 @@ class ShieldRepository(context: Context, scope: CoroutineScope) {
         val ended = longPreferencesKey("ended_at_ms")
         val apps = stringSetPreferencesKey("enabled_apps")
         val web = booleanPreferencesKey("web_filter")
-        val audited = booleanPreferencesKey("tiktok_audited")
     }
 
     private val _state = MutableStateFlow(runBlocking { store.data.first().toState() })
@@ -58,7 +57,6 @@ class ShieldRepository(context: Context, scope: CoroutineScope) {
             endedAtMs = this[K.ended],
             enabledApps = this[K.apps] ?: d.enabledApps,
             webFilter = this[K.web] ?: d.webFilter,
-            tiktokAudited = this[K.audited] ?: d.tiktokAudited,
         )
     }
 
@@ -69,6 +67,5 @@ class ShieldRepository(context: Context, scope: CoroutineScope) {
         if (s.endedAtMs != null) this[K.ended] = s.endedAtMs else remove(K.ended)
         this[K.apps] = s.enabledApps
         this[K.web] = s.webFilter
-        this[K.audited] = s.tiktokAudited
     }
 }
