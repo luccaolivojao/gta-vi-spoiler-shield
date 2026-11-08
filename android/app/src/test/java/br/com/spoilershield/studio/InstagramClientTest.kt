@@ -22,7 +22,7 @@ class InstagramClientTest {
         server = MockWebServer().also { it.start() }
         val base = server.url("/").toString().trimEnd('/')
         client = InstagramClient(OkHttpClient(), base, base, base, "v27.0", sleep = {}, pollIntervalMs = 0, maxPolls = 3)
-        video = File.createTempFile("v", ".mp4").apply { writeBytes(ByteArray(2048)) }
+        video = File.createTempFile("video", ".mp4").apply { writeBytes(ByteArray(2048)) }
     }
 
     @After fun tearDown() { server.shutdown(); video.delete() }

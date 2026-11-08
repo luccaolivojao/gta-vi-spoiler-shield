@@ -25,7 +25,7 @@ class TikTokClientTest {
     @Before fun setUp() {
         server = MockWebServer().also { it.start() }
         client = TikTokClient(OkHttpClient(), server.url("/").toString().trimEnd('/'), sleep = {}, pollIntervalMs = 0, maxPolls = 2)
-        video = File.createTempFile("v", ".mp4").apply { writeBytes(ByteArray(1000) { it.toByte() }) }
+        video = File.createTempFile("video", ".mp4").apply { writeBytes(ByteArray(1000) { it.toByte() }) }
     }
 
     @After fun tearDown() { server.shutdown(); video.delete() }
