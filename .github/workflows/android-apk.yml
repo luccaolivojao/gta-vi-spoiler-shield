@@ -33,7 +33,7 @@ jobs:
               h=open(x,encoding='utf-8').read(2000)
               m=re.search(r'tests="(\d+)" skipped="(\d+)" failures="(\d+)" errors="(\d+)"',h)
               if m: a,b,c,d=map(int,m.groups()); t+=a;s+=b;f+=c;e+=d
-              for n in re.findall(r'<testcase name="([^"]+)" classname="([^"]+)"[^>]*>\s*<failure',open(x,encoding='utf-8').read()): print('FALHOU:',n[1],n[0])
+              for n in re.findall(r'<testcase name="([^"]+)" classname="([^"]+)"[^>]*>\s*<failure message="([^"]{0,300})',open(x,encoding='utf-8').read()): print('FALHOU:',n[1],n[0],'::',n[2])
           print(f'TESTES: total={t} falhas={f} erros={e} ignorados={s}')
           PY
       - name: APK debug
