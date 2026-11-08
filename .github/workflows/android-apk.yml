@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -21,6 +23,19 @@ jobs:
       - name: Testes unitários
         run: ./gradlew testDebugUnitTest --stacktrace
         continue-on-error: true
+      - name: Resultado dos testes
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob,re
+          t=f=e=s=0
+          for x in glob.glob('app/build/test-results/**/*.xml',recursive=True):
+              h=open(x,encoding='utf-8').read(2000)
+              m=re.search(r'tests="(\d+)" skipped="(\d+)" failures="(\d+)" errors="(\d+)"',h)
+              if m: a,b,c,d=map(int,m.groups()); t+=a;s+=b;f+=c;e+=d
+              for n in re.findall(r'<testcase name="([^"]+)" classname="([^"]+)"[^>]*>\s*<failure',open(x,encoding='utf-8').read()): print('FALHOU:',n[1],n[0])
+          print(f'TESTES: total={t} falhas={f} erros={e} ignorados={s}')
+          PY
       - name: APK debug
         run: ./gradlew assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
@@ -32,3 +47,10 @@ jobs:
         with:
           name: test-reports
           path: android/app/build/reports/tests/
+      - name: Publicar APK numa Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        working-directory: ${{ github.workspace }}
+        run: |
+          gh release delete apk-latest --yes --cleanup-tag || true
+          gh release create apk-latest android/app/build/outputs/apk/debug/app-debug.apk --title "APK debug (último build)" --notes "Build ${{ github.sha }}. APK de debug, assinado com a chave de debug." --target ${{ github.sha }}
