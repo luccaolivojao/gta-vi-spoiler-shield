@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GTA VI Spoiler Shield</string>
+    <string name="accessibility_label">Spoiler Shield – detector de apps bloqueados</string>
+    <string name="accessibility_description">Usado somente para saber qual aplicativo foi aberto e, se ele estiver na sua lista de bloqueio durante o modo anti-spoiler, mostrar a tela de proteção. Não lê textos, mensagens, senhas nem o conteúdo da tela.</string>
+</resources>

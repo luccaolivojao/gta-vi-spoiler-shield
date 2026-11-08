@@ -1,0 +1,91 @@
+# Gere o projeto Xcode com:  brew install xcodegen && xcodegen generate
+# Depois: abra SpoilerShield.xcodeproj, escolha SEU Team em "Signing & Capabilities" de cada target.
+name: SpoilerShield
+options:
+  bundleIdPrefix: br.com.spoilershield
+  deploymentTarget:
+    iOS: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: ""            # <- preencha com o seu Team ID
+targets:
+  SpoilerShield:
+    type: application
+    platform: iOS
+    sources: [SpoilerShield, Shared]
+    entitlements:
+      path: SpoilerShield/SpoilerShield.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.security.application-groups: [group.br.com.spoilershield]
+    info:
+      path: SpoilerShield/Info.plist
+      properties:
+        CFBundleDisplayName: GTA VI Spoiler Shield
+        UILaunchScreen: {}
+        UIUserInterfaceStyle: Dark
+    dependencies:
+      - target: DeviceActivityMonitorExtension
+      - target: ShieldConfigurationExtension
+      - target: ShieldActionExtension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.spoilershield.app
+  DeviceActivityMonitorExtension:
+    type: app-extension
+    platform: iOS
+    sources: [DeviceActivityMonitorExtension, Shared]
+    entitlements:
+      path: DeviceActivityMonitorExtension/Monitor.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.security.application-groups: [group.br.com.spoilershield]
+    info:
+      path: DeviceActivityMonitorExtension/Info.plist
+      properties:
+        CFBundleDisplayName: Spoiler Shield Monitor
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.deviceactivity.monitor-extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).DeviceActivityMonitorExtension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.spoilershield.app.monitor
+  ShieldConfigurationExtension:
+    type: app-extension
+    platform: iOS
+    sources: [ShieldConfigurationExtension, Shared]
+    entitlements:
+      path: ShieldConfigurationExtension/Shield.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.security.application-groups: [group.br.com.spoilershield]
+    info:
+      path: ShieldConfigurationExtension/Info.plist
+      properties:
+        CFBundleDisplayName: Spoiler Shield Tela
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.ManagedSettingsUI.shield-configuration-service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShieldConfigurationExtension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.spoilershield.app.shield
+  ShieldActionExtension:
+    type: app-extension
+    platform: iOS
+    sources: [ShieldActionExtension, Shared]
+    entitlements:
+      path: ShieldActionExtension/Action.entitlements
+      properties:
+        com.apple.developer.family-controls: true
+        com.apple.security.application-groups: [group.br.com.spoilershield]
+    info:
+      path: ShieldActionExtension/Info.plist
+      properties:
+        CFBundleDisplayName: Spoiler Shield Acao
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.ManagedSettings.shield-action-service
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShieldActionExtension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: br.com.spoilershield.app.action

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Configuração mínima: apenas eventos de mudança de janela (nome do pacote), SEM acesso ao
+  conteúdo das janelas. isAccessibilityTool NÃO é declarado (este app não é uma ferramenta
+  de acessibilidade) – por isso a distribuição é por APK próprio (sideload), não pela Play Store.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/accessibility_description"
+    android:notificationTimeout="50" />
